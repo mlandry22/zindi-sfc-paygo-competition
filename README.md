@@ -12,7 +12,8 @@
 * MacBook Pro (15-inch, 2018)
 * 2.9 GHz 6-Core Intel Core i9
 * 32 GB 2400 MHz DDR4
-* Created origianlly on MacOS Catalina; reproduction performed on MacOS Big Sur
+* Created originally on MacOS Catalina; reproduction performed on MacOS Big Sur
+* Runtime from start to finish was 58 minutes on the specified hardware.
 
 ## Software
 * R: 3.5.2
@@ -52,6 +53,8 @@ For reproducibility across experiments, I switched from random cross-validation 
 The six different targets are related, so smoothing the six as a set was experimented with and a 70/30 average of the original prediction (70%) and the average of all six predictions (30%) was used.
 
 One exception is that an unsupervised clustering of all payment values occurs in a kMeans model. The cluster IDs are used in the modelling step. This model trains very quickly and did provide a slight uplift.
+
+Reproducibility of the folds was removed from a random selection, but seeds into the model were not always consistent, except the kMeans. I have run the script top to bottom a couple times and get answers hat have a 0.996 and 0.997 correlation. Scores are nearly identical, but very slightly different. In this code, I have used the same seed as the kMeans model.
 
 ## Additional Comments
 It was particularly interesting that once the prediction scores of the public test set achieved a particular relative score, it seemed most new ideas made an insignificant difference. Most of those ideas had been vetted through cross-validation to show some gain, but only those that showed gains in both were retained. However, a look at the private leaderboard scores shows that this strategy was not optimal. The best private leaderboard score was one of the first models created, and the improvement was enough that even if estimating the performance loss of removing the leaked column, it was still likely the best overall model.
