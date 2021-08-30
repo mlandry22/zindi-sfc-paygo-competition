@@ -14,6 +14,13 @@
 * 32 GB 2400 MHz DDR4
 * Created origianlly on MacOS Catalina; reproduction performed on MacOS Big Sur
 
+## Software
+* R: 3.5.2
+* data.table: 1.12.6
+* h2o: 3.32.1.3
+* xgboost: 0.90.0.2
+The R version is over two years old, but more recent versions should run these packages identically.
+
 ## Zindi documentation expectations:
 * Data used: only files provided as part of the competition
 * Output data and where they are stored: local drive; altering all locations from "/Users/mlandry003/Documents/zindi-sfc-paygo-solar/sfc-paygo-solar-credit-repayment-competition/" to the desired location will not affect the input or output, as long as both exist at the same level. 
@@ -40,6 +47,8 @@ The meta data is then merged (after removing the leaked column). Various math ca
 
 ### Modelling
 The modelling is mostly carried out through straightforward XGBoost models, trained in H2O.
+For reproducibility across experiments, I switched from random cross-validation to an arbitrary but consistent use of FirstPaymentDate, where the 19th digit was used to obtain an even distribution (`fold5` and `fold10` are derived in this way). 5-fold cross validation was used, managed through H2O's fold column, where the final model was created using the average tree counts of the five CV models, each with early stopping.
+
 The six different targets are related, so smoothing the six as a set was experimented with and a 70/30 average of the original prediction (70%) and the average of all six predictions (30%) was used.
 
 One exception is that an unsupervised clustering of all payment values occurs in a kMeans model. The cluster IDs are used in the modelling step. This model trains very quickly and did provide a slight uplift.
