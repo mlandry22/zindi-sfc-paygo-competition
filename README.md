@@ -1,18 +1,18 @@
 # zindi-sfc-paygo-competition
-SFC PAYGo Solar Credit Repayment Competition on Zindi
-20th place submission from Mark Landry (mlandry)
+* SFC PAYGo Solar Credit Repayment Competition on Zindi
+* 20th place submission from Mark Landry (mlandry)
 
 ## Submission info from Zindi platform
-ID: PxUMpsQ1
-Filename: sub0813g.csv
-Comment: kMeans on Paid columns
-Submitted: 14 August 19:41
+* ID: PxUMpsQ1
+* Filename: sub0813g.csv
+* Comment: kMeans on Paid columns
+* Submitted: 14 August 19:41
 
 ## Environment
-MacBook Pro (15-inch, 2018)
-2.9 GHz 6-Core Intel Core i9
-32 GB 2400 MHz DDR4
-Created origianlly on MacOS Catalina; reproduction performed on MacOS Big Sur
+* MacBook Pro (15-inch, 2018)
+* 2.9 GHz 6-Core Intel Core i9
+* 32 GB 2400 MHz DDR4
+* Created origianlly on MacOS Catalina; reproduction performed on MacOS Big Sur
 
 ## Zindi documentation expectations:
 * Data used: only files provided as part of the competition
