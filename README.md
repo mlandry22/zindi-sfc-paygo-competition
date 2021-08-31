@@ -17,9 +17,12 @@
 
 ## Software
 * R: 3.5.2
-* data.table: 1.12.6
-* h2o: 3.32.1.3
-* xgboost: 0.90.0.2
+  * data.table: 1.12.6
+  * h2o: 3.32.1.3
+  * xgboost: 0.90.0.2
+  * Metrics: 0.1.4
+* Java: 1.8.0_181
+
 The R version is over two years old, but more recent versions should run these packages identically.
 
 ## Zindi documentation expectations:
