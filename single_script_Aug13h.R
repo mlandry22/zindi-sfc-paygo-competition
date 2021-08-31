@@ -2,7 +2,7 @@
 ## ONE TIME USE, THEN SAVED
 library(data.table)
 library(Metrics)
-setwd("/Users/mlandry003/Documents/zindi-sfc-paygo-solar/sfc-paygo-solar-credit-repayment-competition/")
+  setwd("/Users/mlandry003/Documents/zindi-sfc-paygo-solar/sfc-paygo-solar-credit-repayment-competition/")
 train<-fread("Train.csv")
 test<-fread("Test.csv")
 ss<-fread("SampleSubmission.csv")
@@ -333,37 +333,38 @@ featureCols<-setdiff(colnames(fullHex)
 ###########################################
 ###########################################
 ###########################################
-xgbm2m1<-h2o.xgboost(x=featureCols,y="m1",training_frame = fullHex, seed = 2021
+SEED <- 42
+xgbm2m1<-h2o.xgboost(x=featureCols,y="m1",training_frame = fullHex, seed = SEED
                      ,learn_rate = 0.01,ntrees = 2000,max_depth = 10
                      ,fold_column = "fold5",score_tree_interval = 10
                      ,stopping_rounds = 5,stopping_tolerance = 0.0
                      ,sample_rate = 0.75,col_sample_rate = 0.75
                      ,model_id = "xgbm2.m1")
-xgbm2m2<-h2o.xgboost(x=featureCols,y="m2",training_frame = fullHex, seed = 2021
+xgbm2m2<-h2o.xgboost(x=featureCols,y="m2",training_frame = fullHex, seed = SEED
                      ,learn_rate = 0.01,ntrees = 2000,max_depth = 10
                      ,fold_column = "fold5",score_tree_interval = 10
                      ,stopping_rounds = 5,stopping_tolerance = 0.0
                      ,sample_rate = 0.75,col_sample_rate = 0.75
                      ,model_id = "xgbm2.m2")
-xgbm2m3<-h2o.xgboost(x=featureCols,y="m3",training_frame = fullHex, seed = 2021
+xgbm2m3<-h2o.xgboost(x=featureCols,y="m3",training_frame = fullHex, seed = SEED
                      ,learn_rate = 0.01,ntrees = 2000,max_depth = 10
                      ,fold_column = "fold5",score_tree_interval = 10
                      ,stopping_rounds = 5,stopping_tolerance = 0.0
                      ,sample_rate = 0.75,col_sample_rate = 0.75
                      ,model_id = "xgbm2.m3")
-xgbm2m4<-h2o.xgboost(x=featureCols,y="m4",training_frame = fullHex, seed = 2021
+xgbm2m4<-h2o.xgboost(x=featureCols,y="m4",training_frame = fullHex, seed = SEED
                      ,learn_rate = 0.01,ntrees = 2000,max_depth = 10
                      ,fold_column = "fold5",score_tree_interval = 10
                      ,stopping_rounds = 5,stopping_tolerance = 0.0
                      ,sample_rate = 0.75,col_sample_rate = 0.75
                      ,model_id = "xgbm2.m4")
-xgbm2m5<-h2o.xgboost(x=featureCols,y="m5",training_frame = fullHex, seed = 2021
+xgbm2m5<-h2o.xgboost(x=featureCols,y="m5",training_frame = fullHex, seed = SEED
                      ,learn_rate = 0.01,ntrees = 2000,max_depth = 10
                      ,fold_column = "fold5",score_tree_interval = 10
                      ,stopping_rounds = 5,stopping_tolerance = 0.0
                      ,sample_rate = 0.75,col_sample_rate = 0.75
                      ,model_id = "xgbm2.m5")
-xgbm2m6<-h2o.xgboost(x=featureCols,y="m6",training_frame = fullHex, seed = 2021
+xgbm2m6<-h2o.xgboost(x=featureCols,y="m6",training_frame = fullHex, seed = SEED
                      ,learn_rate = 0.01,ntrees = 2000,max_depth = 10
                      ,fold_column = "fold5",score_tree_interval = 10
                      ,stopping_rounds = 5,stopping_tolerance = 0.0
@@ -389,4 +390,4 @@ submission<-rbind(
 
 submission[,meanTarget:=mean(rawTarget),IDnum]
 submission[,`:=`(Target=pmax(0,rawTarget*0.7 + meanTarget*0.3))]
-fwrite(submission[,.(ID,Target)],"sub0813g-replicated0830.csv")
+fwrite(submission[,.(ID,Target)],"sub0813g.csv")
